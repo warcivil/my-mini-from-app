@@ -1,0 +1,7 @@
+1)все поля с id. собственно, что лучше? Обратиться по id к стране или по ее названию аналогично с городами.
+2)
+FROM Sales.Order SELECT SalesPersonId, count(orderid)
+GROUP BY salespersonid WHERE orderdate BETWEEN '2013.01.01' AND '2013.12.31'
+
+3) FROM Sales.OrderLines SELECT OrderID, CustomerID, TotalCost 
+GROUP BY DESC UnitPrice WHERE UnitPrice > 25000
