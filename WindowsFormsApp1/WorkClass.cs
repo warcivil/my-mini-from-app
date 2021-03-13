@@ -93,7 +93,7 @@ namespace WindowsFormsApp1
             return country.OrderByDescending(pair => pair.Value).ToDictionary(pair => pair.Key, pair => pair.Value); ;
 
         }
-        public new Dictionary<int, Country> ToString()
+        public Dictionary<int, Country> GetCountriesDict()
         {
             return countries;
         }

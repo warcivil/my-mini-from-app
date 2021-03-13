@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.yearComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.topTenLabel = new System.Windows.Forms.Label();
+            this.openMyCsv = new System.Windows.Forms.OpenFileDialog();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGriedView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dataLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGriedView)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // yearComboBox
             // 
-            this.comboBox1.Location = new System.Drawing.Point(12, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.Text = "Выберите год";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.yearComboBox.Location = new System.Drawing.Point(12, 12);
+            this.yearComboBox.Name = "yearComboBox";
+            this.yearComboBox.Size = new System.Drawing.Size(121, 23);
+            this.yearComboBox.TabIndex = 0;
+            this.yearComboBox.Text = "Выберите год";
+            this.yearComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -83,22 +83,22 @@
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.Text = "dataGridView1";
             // 
-            // label4
+            // topTenLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(554, 58);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 15);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Топ 10 стран за n год";
+            this.topTenLabel.AutoSize = true;
+            this.topTenLabel.Location = new System.Drawing.Point(554, 58);
+            this.topTenLabel.Name = "topTenLabel";
+            this.topTenLabel.Size = new System.Drawing.Size(121, 15);
+            this.topTenLabel.TabIndex = 5;
+            this.topTenLabel.Text = "Топ 10 стран за n год";
             // 
-            // openFileDialog1
+            // openMyCsv
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openMyCsv.FileName = "openFileDialog1";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(337, 12);
+            this.button1.Location = new System.Drawing.Point(665, 415);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(123, 23);
             this.button1.TabIndex = 6;
@@ -106,17 +106,17 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dataGridView2
+            // dataGriedView
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGriedView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGriedView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
-            this.dataGridView2.Location = new System.Drawing.Point(78, 91);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(243, 303);
-            this.dataGridView2.TabIndex = 4;
-            this.dataGridView2.Text = "dataGridView1";
+            this.dataGriedView.Location = new System.Drawing.Point(78, 91);
+            this.dataGriedView.Name = "dataGriedView";
+            this.dataGriedView.Size = new System.Drawing.Size(243, 303);
+            this.dataGriedView.TabIndex = 4;
+            this.dataGriedView.Text = "dataGridView1";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -128,14 +128,14 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "Количество продаж";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // label1
+            // dataLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(141, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 15);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "данные за **** год";
+            this.dataLabel.AutoSize = true;
+            this.dataLabel.Location = new System.Drawing.Point(141, 58);
+            this.dataLabel.Name = "dataLabel";
+            this.dataLabel.Size = new System.Drawing.Size(106, 15);
+            this.dataLabel.TabIndex = 7;
+            this.dataLabel.Text = "данные за **** год";
             // 
             // Form1
             // 
@@ -143,18 +143,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dataLabel);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.topTenLabel);
+            this.Controls.Add(this.dataGriedView);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.yearComboBox);
             this.Name = "Form1";
             this.Text = "данные за n год";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGriedView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,18 +162,18 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label topTenLabel;
+        private System.Windows.Forms.OpenFileDialog openMyCsv;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGriedView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label dataLabel;
     }
 }
 

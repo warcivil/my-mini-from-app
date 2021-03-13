@@ -13,8 +13,10 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         String PATH = "csv/SalesData.csv";
-        Dictionary<string, Year> keyValuePairs = new Dictionary<string, Year>();
+        
+        Dictionary<string, Year> csvData = new Dictionary<string, Year>();
         Dictionary<string, int> topTenCountry = new Dictionary<string, int>();
+       
         public Form1()
         {
             InitializeComponent();
@@ -24,9 +26,9 @@ namespace WindowsFormsApp1
         {
             int counter = 0;
 
+            /* подчищаем наши таблицы после выбора нового года */
             dataGridView1.Rows.Clear();
-            dataGridView2.Rows.Clear();
-
+            dataGriedView.Rows.Clear();
             foreach (var item in topTenCountry)
             {
                 if (counter++ < 10) // выводим только 10 значений
@@ -35,10 +37,9 @@ namespace WindowsFormsApp1
                 }
                 else break;
             }
-
-            foreach (var item in keyValuePairs[comboBox1.SelectedItem.ToString()].ToString())
+            foreach (var item in csvData[yearComboBox.SelectedItem.ToString()].GetCountriesDict())
             {
-                dataGridView2.Rows.Add(item.Value.ToString(), item.Value.sumord);
+                dataGriedView.Rows.Add(item.Value.ToString(), item.Value.sumord);
             }
         }
 
@@ -46,6 +47,14 @@ namespace WindowsFormsApp1
         {
             using (TextFieldParser parser = new TextFieldParser(PATH))
             {
+                /*
+                 * field[0] => Year
+                 * field[1] => CountryID
+                 * field[2] => CountryName
+                 * field[3] => CityID
+                 * field[4] => CityName
+                 * field[5] => OrderCount
+                 */
                 parser.TextFieldType = FieldType.Delimited;
                 parser.SetDelimiters(",");
                 parser.ReadFields();
@@ -53,26 +62,24 @@ namespace WindowsFormsApp1
                 {
                     string[] fields = parser.ReadFields();
                     Year year = null;
-                    if (!keyValuePairs.ContainsKey(fields[0])) // если данных нет, то закидываем их
+                    if (!csvData.ContainsKey(fields[0])) // если данных нет, то закидываем их
                     {
                         year = new Year(int.Parse(fields[0]));
-                        keyValuePairs[fields[0]] = year;
+                        csvData[fields[0]] = year;
                     }
                     else
-                        year = keyValuePairs[fields[0]];
+                        year = csvData[fields[0]];
                     Country country = year.IfAddCountry(int.Parse(fields[1]), fields[2]); // если город добавлен, второй раз это не делаем
                     City city = country.IfAddCity(int.Parse(fields[3]), fields[4], int.Parse(fields[5])); // аналогично
                 }
-            } // распарсим файл 
+            } // распарсим файл, получим хорошо структуриваный словарь с данными с csv
 
-            comboBox1.Items.Clear(); // подчистим комбо бокс
-
-            foreach (var id in keyValuePairs) // заполним комбо бокс
+            yearComboBox.Items.Clear(); // подчистим комбо бокс
+            foreach (var id in csvData) // заполним комбо бокс
             {
-                comboBox1.Items.Add(id.Key);
+                yearComboBox.Items.Add(id.Key);
             }
-
-            comboBox1.SelectedIndex = 0; // ставим выбор на первый элемент комбо бокса
+            yearComboBox.SelectedIndex = 0; // ставим выбор на первый элемент комбо бокса
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -83,25 +90,25 @@ namespace WindowsFormsApp1
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             /* вся работа по изменению комбо бокса */
-            
-            topTenCountry = keyValuePairs[comboBox1.SelectedItem.ToString()].TopTenCountry();
-            label1.Text = "данные за " + comboBox1.SelectedItem.ToString() + " год" + "\n";
-
+            topTenCountry = csvData[yearComboBox.SelectedItem.ToString()].TopTenCountry();
+            dataLabel.Text = "данные за " + yearComboBox.SelectedItem.ToString() + " год" + "\n";
             GetDataGrid();
-
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
-            PATH = openFileDialog1.FileName;
-            //if(comboBox1.SelectedItem != null)
-            label1.Text = "данные за " + comboBox1.SelectedItem.ToString() + " год" + "\n";
+            openMyCsv.FileName = "SalesData.csv";
+            openMyCsv.DefaultExt = ".csv";
+            openMyCsv.Filter= "Файл формата  .csv|*.csv";
+
+            if (openMyCsv.ShowDialog() == DialogResult.OK)
+                PATH = openMyCsv.FileName;
+
+            dataLabel.Text = "данные за " + yearComboBox.SelectedItem.ToString() + " год" + "\n";
             
             /* подчищаем наш вывод */
             dataGridView1.Rows.Clear(); 
-            keyValuePairs.Clear();
+            csvData.Clear();
             
             GetDict();
         }
