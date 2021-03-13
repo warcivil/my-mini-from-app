@@ -20,6 +20,28 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
+        public void GetDataGrid() // заполняем новыми данными
+        {
+            int counter = 0;
+
+            dataGridView1.Rows.Clear();
+            dataGridView2.Rows.Clear();
+
+            foreach (var item in topTenCountry)
+            {
+                if (counter++ < 10) // выводим только 10 значений
+                {
+                    dataGridView1.Rows.Add(item.Key, item.Value);
+                }
+                else break;
+            }
+
+            foreach (var item in keyValuePairs[comboBox1.SelectedItem.ToString()].ToString())
+            {
+                dataGridView2.Rows.Add(item.Value.ToString(), item.Value.sumord);
+            }
+        }
+
         public void GetDict() // получаем dict с csv
         {
             using (TextFieldParser parser = new TextFieldParser(PATH))
@@ -42,13 +64,15 @@ namespace WindowsFormsApp1
                     City city = country.IfAddCity(int.Parse(fields[3]), fields[4], int.Parse(fields[5])); // аналогично
                 }
             } // распарсим файл 
-            comboBox1.Items.Clear();
+
+            comboBox1.Items.Clear(); // подчистим комбо бокс
+
             foreach (var id in keyValuePairs) // заполним комбо бокс
             {
                 comboBox1.Items.Add(id.Key);
-
             }
-            comboBox1.SelectedIndex = 0;
+
+            comboBox1.SelectedIndex = 0; // ставим выбор на первый элемент комбо бокса
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -59,22 +83,13 @@ namespace WindowsFormsApp1
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             /* вся работа по изменению комбо бокса */
-            int counter = 0;
             
             topTenCountry = keyValuePairs[comboBox1.SelectedItem.ToString()].TopTenCountry();
             label1.Text = "данные за " + comboBox1.SelectedItem.ToString() + " год" + "\n";
-            label1.Text += keyValuePairs[comboBox1.SelectedItem.ToString()].ToString() + "\n";
-            label4.Text = "Топ 10 стран за " + comboBox1.SelectedItem.ToString() + " год";
-           
-            dataGridView1.Rows.Clear();
-            foreach(var item in topTenCountry)
-            {
-                if (counter++ < 10) // выводим только 10 значений
-                {
-                    dataGridView1.Rows.Add(item.Key, item.Value);
-                }
-                else break;
-            }
+
+            GetDataGrid();
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -83,8 +98,11 @@ namespace WindowsFormsApp1
             PATH = openFileDialog1.FileName;
             //if(comboBox1.SelectedItem != null)
             label1.Text = "данные за " + comboBox1.SelectedItem.ToString() + " год" + "\n";
-            dataGridView1.Rows.Clear();
+            
+            /* подчищаем наш вывод */
+            dataGridView1.Rows.Clear(); 
             keyValuePairs.Clear();
+            
             GetDict();
         }
     }

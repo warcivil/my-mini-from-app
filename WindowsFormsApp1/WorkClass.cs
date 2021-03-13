@@ -93,14 +93,9 @@ namespace WindowsFormsApp1
             return country.OrderByDescending(pair => pair.Value).ToDictionary(pair => pair.Key, pair => pair.Value); ;
 
         }
-        public string ToString()
+        public new Dictionary<int, Country> ToString()
         {
-            string s = "";
-            foreach (var item in countries)
-            {
-                s += item.Value.ToString() + ": " + item.Value.sumord + "\n"; 
-            }
-            return s;
+            return countries;
         }
     }
 }
