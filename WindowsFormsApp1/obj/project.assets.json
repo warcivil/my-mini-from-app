@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pixte\\OneDrive\\Рабочий стол\\gut\\frg\\WindowsFormsApp1\\WindowsFormsApp1\\WindowsFormsApp1.csproj",
+      "projectUniqueName": "C:\\Users\\pixte\\OneDrive\\Рабочий стол\\gut\\frg\\my mini form app\\my-mini-from-app\\WindowsFormsApp1\\WindowsFormsApp1.csproj",
       "projectName": "WindowsFormsApp1",
-      "projectPath": "C:\\Users\\pixte\\OneDrive\\Рабочий стол\\gut\\frg\\WindowsFormsApp1\\WindowsFormsApp1\\WindowsFormsApp1.csproj",
+      "projectPath": "C:\\Users\\pixte\\OneDrive\\Рабочий стол\\gut\\frg\\my mini form app\\my-mini-from-app\\WindowsFormsApp1\\WindowsFormsApp1.csproj",
       "packagesPath": "C:\\Users\\pixte\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pixte\\OneDrive\\Рабочий стол\\gut\\frg\\WindowsFormsApp1\\WindowsFormsApp1\\obj\\",
+      "outputPath": "C:\\Users\\pixte\\OneDrive\\Рабочий стол\\gut\\frg\\my mini form app\\my-mini-from-app\\WindowsFormsApp1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pixte\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -61,7 +61,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.406\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.407\\RuntimeIdentifierGraph.json"
       }
     }
   }
