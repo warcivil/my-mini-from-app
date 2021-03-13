@@ -94,18 +94,9 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ;
-            openFileDialog1.DefaultExt = ".txt";
-            openFileDialog1.Filter = "csv files (*.csv)|*.csv";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                PATH = openFileDialog1.FileName;
-            }
-            else
-            {
-                PATH = "csv/SalesData.csv";
-            }
-                //if(comboBox1.SelectedItem != null)
+            openFileDialog1.ShowDialog();
+            PATH = openFileDialog1.FileName;
+            //if(comboBox1.SelectedItem != null)
             label1.Text = "данные за " + comboBox1.SelectedItem.ToString() + " год" + "\n";
             
             /* подчищаем наш вывод */
