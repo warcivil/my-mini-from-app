@@ -91,6 +91,7 @@ namespace WindowsFormsApp1
         {
             /* вся работа по изменению комбо бокса */
             topTenCountry = csvData[yearComboBox.SelectedItem.ToString()].TopTenCountry();
+            topTenLabel.Text = "топ 10 стран за " + yearComboBox.SelectedItem.ToString() + " год" + "\n";
             dataLabel.Text = "данные за " + yearComboBox.SelectedItem.ToString() + " год" + "\n";
             GetDataGrid();
         }
@@ -102,10 +103,7 @@ namespace WindowsFormsApp1
             openMyCsv.Filter= "Файл формата  .csv|*.csv";
 
             if (openMyCsv.ShowDialog() == DialogResult.OK)
-                PATH = openMyCsv.FileName;
-
-            dataLabel.Text = "данные за " + yearComboBox.SelectedItem.ToString() + " год" + "\n";
-            
+                PATH = openMyCsv.FileName;           
             /* подчищаем наш вывод */
             dataGridView1.Rows.Clear(); 
             csvData.Clear();
